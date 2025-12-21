@@ -1,4 +1,4 @@
-# 🚀 Basic LangGraph + LangChain Chatbot (with Tools) — Streamlit Application
+# 🚀 Basic LangGraph  (with Tools) — Streamlit Application
 
 A modular and extensible chatbot application built using:
 
