@@ -23,61 +23,75 @@ This project demonstrates how to build a basic chatbot using a graph-based pipel
 ---
 
 ## 🏗️ Project Structure
+```mermaid
+graph TD
 
-basic_chatbot_langchain/
-│
-├── app.py
-└── src/
-└── langgraphagenticai/
-├── ui/
-│ ├── streamlitui/
-│ │ ├── loadui.py
-│ │ └── display_result.py
-│ └── uiconfigfile.ini
-| |__ uiconfigfile.py
-│
-├── graph/
-│ └── graph_builder.py
-│
-├── nodes/
-│ └── basic_chatbot_node.py
-| |__chatbot_with_tool_node.py
-│
-├── llms/
-│ └── groqllm.py
-│
-├── state/
-│ └── state.py
-|
-|__ tools/
-| |__search_tool.py
-│
-└── main.py
-|
-|__app.py
+    A[basic_chatbot_langchain] --> B[app.py]
 
+    A --> C[src]
+    C --> D[langgraphagenticai]
+
+    %% UI
+    D --> E[ui]
+    E --> F[streamlitui]
+    F --> F1[loadui.py]
+    F --> F2[display_result.py]
+    E --> E1[uiconfigfile.ini]
+    E --> E2[uiconfigfile.py]
+
+    %% Graph
+    D --> G[graph]
+    G --> G1[graph_builder.py]
+
+    %% Nodes
+    D --> H[nodes]
+    H --> H1[basic_chatbot_node.py]
+    H --> H2[chatbot_with_tool_node.py]
+
+    %% LLMs
+    D --> I[llms]
+    I --> I1[groqllm.py]
+
+    %% State
+    D --> J[state]
+    J --> J1[state.py]
+
+    %% Tools
+    D --> K[tools]
+    K --> K1[search_tool.py]
+
+    %% Main file
+    D --> L[main.py]
+
+    %% Root-level app
+    A --> M[app.py]
+---
 ## 🛠️ Installation & Setup
 
-### **1️⃣ Clone the repository**
-
-git clone https://github.com/<your-username>/basic_chatbot_langchain.git
+### 1️⃣ Clone the repository
+git clone https://github.com/<your-username>/basic_chatbot_langchain.git  
 cd basic_chatbot_langchain
 
+---
+### 2️⃣ Create a virtual environment
 
-### **2️⃣ Create a virtual environment**
+**Option A — Using Conda**  
+conda create -p venv python=3.13  
+conda activate ./venv  
 
-conda create -p venv python=3.13
-conda activate ./venv
+**Option B — Using Python venv**  
+python -m venv venv  
 
+**Activate the environment:**  
+Windows: venv\Scripts\activate  
+Mac/Linux: source venv/bin/activate  
 
-python -m venv venv
-# Windows:
-venv\Scripts\activate
-# Mac/Linux:
-source venv/bin/activate
+---
 
-### **3️⃣ Install dependencies**
+### 3️⃣ Install dependencies
 pip install -r requirements.txt
 
-### **4️⃣ Run the Streamlit app**
+---
+
+### 4️⃣ Run the Streamlit app
 streamlit run app.py
