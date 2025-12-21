@@ -93,6 +93,3 @@ graph TD
 
     %% Main file
     D --> L[main.py]
-
-    %% Root-level app
-    A --> M[app.py]
