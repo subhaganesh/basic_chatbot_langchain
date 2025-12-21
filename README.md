@@ -21,6 +21,37 @@ This project demonstrates how to build a basic chatbot using a graph-based pipel
 - **Easy to Extend** — Add new use cases, nodes, or tool-enabled agents  
 
 ---
+## 🛠️ Installation & Setup
+
+### 1️⃣ Clone the repository
+git clone https://github.com/<your-username>/basic_chatbot_langchain.git  
+cd basic_chatbot_langchain
+
+---
+### 2️⃣ Create a virtual environment
+
+**Option A — Using Conda**  
+conda create -p venv python=3.13  
+conda activate ./venv  
+
+**Option B — Using Python venv**  
+python -m venv venv  
+
+**Activate the environment:**  
+Windows: venv\Scripts\activate  
+Mac/Linux: source venv/bin/activate  
+
+---
+
+### 3️⃣ Install dependencies
+pip install -r requirements.txt
+
+---
+
+### 4️⃣ Run the Streamlit app
+streamlit run app.py
+
+---
 
 ## 🏗️ Project Structure
 ```mermaid
@@ -65,33 +96,3 @@ graph TD
 
     %% Root-level app
     A --> M[app.py]
----
-## 🛠️ Installation & Setup
-
-### 1️⃣ Clone the repository
-git clone https://github.com/<your-username>/basic_chatbot_langchain.git  
-cd basic_chatbot_langchain
-
----
-### 2️⃣ Create a virtual environment
-
-**Option A — Using Conda**  
-conda create -p venv python=3.13  
-conda activate ./venv  
-
-**Option B — Using Python venv**  
-python -m venv venv  
-
-**Activate the environment:**  
-Windows: venv\Scripts\activate  
-Mac/Linux: source venv/bin/activate  
-
----
-
-### 3️⃣ Install dependencies
-pip install -r requirements.txt
-
----
-
-### 4️⃣ Run the Streamlit app
-streamlit run app.py
