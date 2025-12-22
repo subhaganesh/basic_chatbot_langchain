@@ -34,6 +34,7 @@ class GraphBuilder:
         #define tool and tool node 
         tools=get_tools()
         tool_node=create_tool_node(tools)
+
         #define llm
         llm=self.llm
 
@@ -49,7 +50,6 @@ class GraphBuilder:
         self.graph_builder.add_conditional_edges("chatbot",tools_condition)
         self.graph_builder.add_edge("tools","chatbot")
         self.graph_builder.add_edge("chatbot",END)
-
 
     def setup_graph(self, usecase: str):
         """
