@@ -81,8 +81,8 @@ class AINewsNode:
     
     def save_result(self, state):
 
-        frequency = state['frequency'].strip().lower()
-        summary = state['summary']
+        frequency = self.state['frequency'].strip().lower()
+        summary = self.state['summary']
 
         filename = f"./basic_chatbot_langchain/AINews/{frequency}_summary.md"
 
@@ -92,5 +92,5 @@ class AINewsNode:
             f.write(f"# {frequency.capitalize()} AI News Summary\n\n")
             f.write(summary)
 
-        state['filename'] = filename
-        return state
+        self.state['filename'] = filename
+        return self.state
