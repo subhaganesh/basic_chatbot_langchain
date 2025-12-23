@@ -1,14 +1,14 @@
-# 🚀 Basic LangGraph  (with Tools) — Streamlit Application
+# 🚀 Basic LangGraph Chatbot (with Tools)
 
-A modular and extensible chatbot application built using:
+A Streamlit-based, agentic chatbot application built using **LangGraph** and **LangChain**, designed to demonstrate how conversational AI systems can be structured as **graph-based workflows** rather than linear chains.
 
-- **LangGraph** – for agent workflows  
-- **LangChain** – for LLM orchestration  
-- **Streamlit** – for the UI  
-- **Groq** – fast, free LLM inference  
-- **Tools (optional)** – extend the chatbot with additional actions  
+The application supports multiple conversational modes within a unified architecture:
+- **Basic Chatbot** – A lightweight, LLM-only conversational agent for general-purpose interactions.
+- **Chatbot with Tavily Search** – A tool-augmented chatbot that dynamically invokes Tavily Search to retrieve real-time information, enabling more accurate and grounded responses.
+- **AI News Fetcher & Summarizer** – An automated agent that fetches the latest AI-related news using Tavily and generates concise, readable summaries using a Groq-powered LLM.
 
-This project demonstrates how to build a basic chatbot using a graph-based pipeline that processes user messages through a configurable LLM setup.
+Each capability is implemented as an independent **LangGraph node**, operating over a shared state and orchestrated through a configurable graph. This modular design ensures clear separation of concerns between UI, agent logic, tools, and LLM configuration, while making the system easy to extend with new tools, agents, or workflows without impacting existing functionality.
+
 
 ---
 
@@ -67,42 +67,48 @@ streamlit run app.py
 
 ## 🏗️ Project Structure
 ```mermaid
-graph TD
+flowchart TD
+    A[basic_chatbot_langchain/] --> B[.git/]
+    A --> C[.gitignore]
+    A --> D[AINews/]
+    A --> E[app.py]
+    A --> F[basic_chatbot_langchain/]
+    A --> G[LICENSE]
+    A --> H[README.md]
+    A --> I[requirements.txt]
+    A --> J[src/]
 
-    A[basic_chatbot_langchain] --> B[app.py]
+    F --> F1[AINews/]
+    F1 --> F1a[daily_summary.md]
 
-    A --> C[src]
-    C --> D[langgraphagenticai]
+    J --> J1[__init__.py]
+    J --> J2[langgraphagenticai/]
 
-    %% UI
-    D --> E[ui]
-    E --> F[streamlitui]
-    F --> F1[loadui.py]
-    F --> F2[display_result.py]
-    E --> E1[uiconfigfile.ini]
-    E --> E2[uiconfigfile.py]
+    J2 --> K1[__init__.py]
+    J2 --> K2[main.py]
+    J2 --> K3[graph/]
+    J2 --> K4[llms/]
+    J2 --> K5[nodes/]
+    J2 --> K6[state/]
+    J2 --> K7[tools/]
+    J2 --> K8[ui/]
 
-    %% Graph
-    D --> G[graph]
-    G --> G1[graph_builder.py]
+    K3 --> K3a[graph_builder.py]
 
-    %% Nodes
-    D --> H[nodes]
-    H --> H1[basic_chatbot_node.py]
-    H --> H2[chatbot_with_tool_node.py]
+    K4 --> K4a[groqllm.py]
 
-    %% LLMs
-    D --> I[llms]
-    I --> I1[groqllm.py]
+    K5 --> K5a[ai_news_node.py]
+    K5 --> K5b[basic_chatbot_node.py]
+    K5 --> K5c[chatbot_with_tool_node.py]
 
-    %% State
-    D --> J[state]
-    J --> J1[state.py]
+    K6 --> K6a[state.py]
 
-    %% Tools
-    D --> K[tools]
-    K --> K1[search_tool.py]
+    K7 --> K7a[search_tool.py]
 
-    %% Main file
-    D --> L[main.py]
+    K8 --> K8a[uiconfigfile.ini]
+    K8 --> K8b[uiconfigfile.py]
+    K8 --> K8c[streamlitui/]
+
+    K8c --> K8c1[display_result.py]
+    K8c --> K8c2[loadui.py]
 ```
